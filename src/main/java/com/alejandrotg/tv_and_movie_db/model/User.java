@@ -26,4 +26,6 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private Rol rol = Rol.USER;
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status = AccountStatus.ACTIVE;
 }
