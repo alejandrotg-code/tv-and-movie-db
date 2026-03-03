@@ -9,12 +9,12 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "favorites")
+@Table(name = "ratings")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Favorite {
+public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,6 +26,9 @@ public class Favorite {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
+
+    private String comment;
+    private int score;
 
     private LocalDate addedAt;
 }
