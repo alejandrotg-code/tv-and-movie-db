@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "contents")
@@ -30,4 +32,11 @@ public class Content {
     private Date releaseDate;
     private double voteAverage;
     private double popularity;
+    @ManyToMany
+    @JoinTable(
+            name = "content_genres",
+            joinColumns = @JoinColumn(name = "content_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genre> genres = new ArrayList<>();
 }

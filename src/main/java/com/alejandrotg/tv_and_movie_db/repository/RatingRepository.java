@@ -10,5 +10,7 @@ import java.util.List;
 public interface RatingRepository extends JpaRepository<Rating, Long> {
     List<Rating> findByUserId(Long userId);
     List<Rating> findByContentId(Long contentId);
+    List<Rating> findByUserIdAndScoreGreaterThanEqual(Long userId, int score);
+
 
 }

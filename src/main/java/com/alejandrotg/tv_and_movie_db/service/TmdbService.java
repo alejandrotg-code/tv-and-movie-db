@@ -37,4 +37,12 @@ public class TmdbService {
                 .bodyToMono(String.class)
                 .block();
     }
+
+    public String getByGenre(int genreId) {
+        return webClient.get()
+                .uri("/discover/movie?with_genres={genreId}&api_key={key}", genreId, apiKey)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+    }
 }
