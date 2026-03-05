@@ -63,14 +63,19 @@ spring.datasource.url=jdbc:postgresql://localhost:5432/tv_and_movie_db
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 tmdb.api.key=your_tmdb_api_key
+jwt.secret=your_token_secret
+jwt.expiration=your_time_expiration
+springdoc.swagger-ui.enabled=true
+springdoc.api-docs.enabled=true
 ```
 3. Run with `local` profile in IntelliJ
 4. API available at `http://localhost:8080`
 
+## 📖 API Documentation
+
+API documented with Swagger/OpenAPI (available in local environment).
+
+![Swagger](./images/swagger.png)
 ## 👤 Author
 
-Alejandro — DAM Developer | AI & Big Data Student
-
-## 🚧 Status
-
-Under active development
+[Alejandro Tacoronte González](https://alejandrotg.es/) — DAM Developer | AI & Big Data Student
