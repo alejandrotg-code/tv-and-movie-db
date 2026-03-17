@@ -1,81 +1,183 @@
 # 🎬 TV & Movie DB
 
-A movie and TV show recommendation platform with personalized suggestions based on user ratings and favorites.
+A movie and TV show recommendation backend that provides personalized suggestions based on user ratings and favorites.
 
-## ✨ Features
+This project demonstrates the development of a REST API using modern Java backend technologies and best practices.
 
-- 🔍 Search movies and TV shows via TMDB API
-- ⭐ Rate and review content
-- ❤️ Save favorites
-- 🤖 Personalized recommendations based on your taste
+---
+
+# ✨ Features
+
+- 🔍 Search movies and TV shows using the TMDB API
+- ⭐ Rate movies and TV shows
+- ❤️ Save content to favorites
+- 🤖 Personalized recommendations based on user ratings
 - 🔐 JWT Authentication & Authorization
+- 📖 API documentation with Swagger / OpenAPI
 
-## 🛠️ Tech Stack
+---
+
+# 🏗️ Architecture
+
+The project follows a **layered architecture** commonly used in Spring Boot applications:
+Controller → Service → Repository → Database
+
+
+### Layers
+
+**Controller**
+- Handles HTTP requests and responses
+- Defines API endpoints
+
+**Service**
+- Contains business logic
+- Coordinates between controllers and repositories
+
+**Repository**
+- Handles database operations using Spring Data JPA
+
+**Database**
+- PostgreSQL database for storing users, ratings, and favorites
+
+---
+
+# 🛠️ Tech Stack
+
+**Backend**
 
 - Java 21
-- Spring Boot 3.5
-- Spring Security + JWT
+- Spring Boot 3
+- Spring Security
+- JWT Authentication
 - Spring Data JPA
+
+**Database**
+
 - PostgreSQL
-- TMDB API
 
-## 📋 API Endpoints
+**External APIs**
 
-### Users
-| Method | URL | Description |
-|--------|-----|-------------|
+- TMDB API (The Movie Database)
+
+**Documentation**
+
+- Swagger / OpenAPI
+
+---
+
+# 📋 API Endpoints
+
+## Users
+
+| Method | Endpoint | Description |
+|------|------|-------------|
 | GET | /users | Get all users |
 | GET | /users/{id} | Get user by ID |
-| POST | /users | Create account |
-| PUT | /users/{id} | Update account |
-| PUT | /users/{id}/deactivate | Deactivate account |
-| DELETE | /users/{id} | Delete account |
+| POST | /users | Create a new user |
+| PUT | /users/{id} | Update user |
+| PUT | /users/{id}/deactivate | Deactivate user account |
+| DELETE | /users/{id} | Delete user |
 
-### Content
-| Method | URL | Description |
-|--------|-----|-------------|
-| GET | /content/search?q= | Search via TMDB |
+---
+
+## Content
+
+| Method | Endpoint | Description |
+|------|------|-------------|
+| GET | /content/search?q= | Search movies and TV shows via TMDB |
 | GET | /content/trending | Get trending content |
 | GET | /content/{id} | Get content details |
 
-### Favorites
-| Method | URL | Description |
-|--------|-----|-------------|
-| GET | /favorites/user/{id} | Get user favorites |
-| POST | /favorites | Add favorite |
+---
+
+## Favorites
+
+| Method | Endpoint | Description |
+|------|------|-------------|
+| GET | /favorites/user/{id} | Get user's favorite content |
+| POST | /favorites | Add content to favorites |
 | DELETE | /favorites/{id} | Remove favorite |
 
-### Ratings
-| Method | URL | Description |
-|--------|-----|-------------|
-| GET | /ratings/user/{id} | Get user ratings |
-| GET | /ratings/content/{id} | Get content ratings |
-| POST | /ratings | Add rating |
-| PUT | /ratings/{id} | Edit rating |
-| DELETE | /ratings/{id} | Delete rating |
+---
 
-## 🚀 Setup
+## Ratings
 
-1. Clone the repository
-2. Create `application-local.properties` in `src/main/resources`:
+| Method | Endpoint | Description |
+|------|------|-------------|
+| GET | /ratings/user/{id} | Get ratings made by a user |
+| GET | /ratings/content/{id} | Get ratings for specific content |
+| POST | /ratings | Add a rating |
+| PUT | /ratings/{id} | Update a rating |
+| DELETE | /ratings/{id} | Delete a rating |
+
+---
+
+# 🚀 Setup
+
+## 1️⃣ Clone the repository
+`git clone https://github.com/alejandrotg-code/tv-and-movie-db.git`
+
+---
+
+## 2️⃣ Create the configuration file
+
+Create a file called:
+`application-local.properties`
+
+Inside:
+`src/main/resources/`
+
+Add the following configuration:
+
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/tv_and_movie_db
 spring.datasource.username=your_username
 spring.datasource.password=your_password
+
 tmdb.api.key=your_tmdb_api_key
+
 jwt.secret=your_token_secret
-jwt.expiration=your_time_expiration
+jwt.expiration=3600000
+
 springdoc.swagger-ui.enabled=true
 springdoc.api-docs.enabled=true
 ```
-3. Run with `local` profile in IntelliJ
-4. API available at `http://localhost:8080`
 
-## 📖 API Documentation
+## 3️⃣ Run the application
 
-API documented with Swagger/OpenAPI (available in local environment).
+Run the project with the local profile enabled.
 
+Example (IntelliJ run configuration):
+`--spring.profiles.active=local`
+
+## 4️⃣ Access the API
+
+- Base URL: `http://localhost:8080`
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
+
+# 📖 API Documentation
+The API is documented using Swagger / OpenAPI.
 ![Swagger](./images/swagger.png)
-## 👤 Author
 
-[Alejandro Tacoronte González](https://alejandrotg.es/) — DAM Developer | AI & Big Data Student
+# 📌 Future Improvements
+
+Planned improvements for the project:
+
+- Add recommendation algorithm based on ratings similarity
+- Pagination for endpoints
+- Unit and integration tests
+- Docker support
+- Rate limiting for API protection
+- Caching for popular content
+
+# 👤 Author
+
+Alejandro Tacoronte González
+
+DAM Developer | AI & Big Data Student
+
+🌐 Portfolio
+https://alejandrotg.es/
+
+💻 Linkedin
+https://www.linkedin.com/in/alejandrotacoronte/
