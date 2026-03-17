@@ -1,6 +1,7 @@
 package com.alejandrotg.tv_and_movie_db.controller;
 
-import com.alejandrotg.tv_and_movie_db.model.Rating;
+import com.alejandrotg.tv_and_movie_db.dto.RatingRequestDTO;
+import com.alejandrotg.tv_and_movie_db.dto.RatingResponseDTO;
 import com.alejandrotg.tv_and_movie_db.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +15,12 @@ public class RatingController {
     private RatingService ratingService;
 
     @PostMapping
-    public Rating addRating(@RequestBody Rating rating){
-        return ratingService.addRating(rating);
+    public RatingResponseDTO addRating(@RequestBody RatingRequestDTO request){
+        return ratingService.addRating(request);
     }
 
     @GetMapping("/user/{userId}")
-    public List<Rating> getRatingsByUser(@PathVariable Long userId) {
+    public List<RatingResponseDTO> getRatingsByUser(@PathVariable Long userId) {
         return ratingService.getRatingsByUser(userId);
     }
 
@@ -29,7 +30,7 @@ public class RatingController {
     }
 
     @GetMapping("/content/{contentId}")
-    public List<Rating> getRatingsByContent(@PathVariable Long contentId) {
+    public List<RatingResponseDTO> getRatingsByContent(@PathVariable Long contentId) {
         return ratingService.getRatingsByContent(contentId);
     }
 

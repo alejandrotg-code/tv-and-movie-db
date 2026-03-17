@@ -3,7 +3,6 @@ package com.alejandrotg.tv_and_movie_db.controller;
 import com.alejandrotg.tv_and_movie_db.model.User;
 import com.alejandrotg.tv_and_movie_db.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
